@@ -24,7 +24,7 @@ router.post('/add', function (req, res) {
             return;
         }
         // str = JSON.stringify(result)
-        console.log('--------------------------INSERT----------------------------');
+        console.log('--------------------------新增----------------------------');
         console.log('INSERT ID:', result);
         console.log('-----------------------------------------------------------------\n\n');
     });

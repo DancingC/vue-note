@@ -18,13 +18,14 @@ connection.query(sql, function (err, result) {
         console.log('[SELECT ERROR]:', err.message);
     }
     str = JSON.stringify(result)
-    console.log(result)
+    
 });
 
 router.get('/about', function (req, res) {
     res.send(str)
 });
 
-// connection.end();     //获取数据库数据
+
+connection.end();     //获取数据库数据
 
 module.exports = router;

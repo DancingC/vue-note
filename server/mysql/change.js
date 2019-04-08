@@ -22,7 +22,7 @@ router.put('/change', function (req, res) {
             console.log('[INSERT ERROR] - ', err.message);
             return;
         }
-        console.log('--------------------------INSERT----------------------------');
+        console.log('--------------------------修改----------------------------');
         console.log('INSERT ID:', result);
         console.log('-----------------------------------------------------------------\n\n');
     });

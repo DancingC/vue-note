@@ -22,7 +22,7 @@ router.delete('/delete', function (req, res) {
             return;
         }
         // str = JSON.stringify(result)
-        console.log('--------------------------INSERT----------------------------');
+        console.log('--------------------------删除----------------------------');
         console.log('INSERT ID:', result);
         console.log('-----------------------------------------------------------------\n\n');
     });

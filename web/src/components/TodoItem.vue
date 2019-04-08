@@ -1,22 +1,9 @@
 <template>
 <div>
-    <el-card shadow="hover" @mouseover="showBtn" @mouseout="liveLi">
+    <li shadow="hover" @mouseover="showBtn" @mouseout="liveLi" class="liText">
       <el-checkbox label='' v-model="checked" name="type" id="checked">{{ title }}</el-checkbox>
       <el-button type="danger" icon="el-icon-delete" class="icon-btn transition-box" v-show="show" circle v-on:click="removeList('remove')"></el-button>
-      <el-button type="text" icon="el-icon-delete" class="icon-btn transition-box" v-show="show" circle v-on:click="change(value)"></el-button>
-    </el-card>
-  
-    <el-dialog :visible.sync="dialogVisible" width="30%" center :show-close="false">
-      <el-form ref="form" :model="changeForm" label-width="80px">
-        <el-form-item label="事项名称">
-          <el-input v-model="changeForm.text"></el-input>
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="changeOk">确 定</el-button>
-      </span>
-    </el-dialog>
+    </li>
 </div>
 </template>
 
@@ -31,11 +18,7 @@ export default {
       checked: false,
       show: false,
       name: this.title,
-      delId: this.id,
-      dialogVisible:false,
-      changeForm:{
-        text:''
-      }
+      delId: this.id
     }
   },
   watch: {
@@ -65,31 +48,29 @@ export default {
         }
       })
       this.$emit('remove')
-    },
-    change(val){
-      this.dialogVisible = true;
-      this.changeForm.text = this.title;
-    },
-    changeOk(){
-      this.title = this.changeForm.text;
-      axios.put('http://localhost:3000/change',{
-          id: this.id,
-          name: this.changeForm.text
-      })
-      this.dialogVisible = false;
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .icon-btn{
     float: right;
     padding: 8px !important;
-    /* display: none; */
 }
 .line{
   text-decoration:line-through;
   color:#ddd !important;
+}
+.liText{
+    border-radius: 4px;
+    border: 1px solid #ebeef5;
+    background-color: #fff;
+    overflow: hidden;
+    color: #303133;
+    transition: .3s;
+    padding: 15px;
+    margin-bottom: 4px;
+    line-height: 36px;
 }
 </style>

@@ -14,7 +14,6 @@
         v-bind:title="todo.name"
         v-bind:id="todo.id"
         v-on:remove="todos.splice(index, 1)"
-        class="el-dropdown-menu__item"
       ></li>
     </ul>
   </div>
