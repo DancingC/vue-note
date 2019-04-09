@@ -3,9 +3,6 @@ var path = require('path');
 var logger = require('morgan');
 
 var connection = require('./mysql/mysql');     //查询数据
-var db = require('./mysql/db');     //添加数据
-var del = require('./mysql/delete');     //删除数据
-var chg = require('./mysql/change');     //修改数据
 
 var app = express();
 
@@ -29,8 +26,5 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', connection)
-app.use('/', db)
-app.use('/', del)
-app.use('/', chg)
 
 module.exports = app;

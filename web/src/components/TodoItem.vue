@@ -1,7 +1,7 @@
 <template>
 <div>
     <li shadow="hover" @mouseover="showBtn" @mouseout="liveLi" class="liText">
-      <el-checkbox label='' v-model="checked" name="type" id="checked">{{ title }}</el-checkbox>
+      <el-checkbox v-model="checked" name="type" class="checked">{{ title }}</el-checkbox>
       <el-button type="danger" icon="el-icon-delete" class="icon-btn transition-box" v-show="show" circle v-on:click="removeList('remove')"></el-button>
     </li>
 </div>
@@ -25,9 +25,9 @@ export default {
     checked: function () {
       this.$nextTick(function () {
         if (this.checked === true) {
-          this.$el.childNodes[0].childNodes[1].classList.add('line')
+          this.$el.querySelector('.checked').lastChild.classList.add('line')
         } else {
-          this.$el.childNodes[0].childNodes[1].classList.remove('line')
+          this.$el.querySelector('.checked').lastChild.classList.remove('line')
         }
       })
     }
@@ -44,7 +44,8 @@ export default {
         method: 'delete',
         url: 'http://localhost:3000/delete',
         data: {
-          id: this.delId
+          id: this.delId,
+          name: this.name
         }
       })
       this.$emit('remove')
@@ -63,14 +64,14 @@ export default {
   color:#ddd !important;
 }
 .liText{
-    border-radius: 4px;
-    border: 1px solid #ebeef5;
+    border-top: 1px solid #ebeef5;
+    border-bottom: 1px solid #ebeef5;
     background-color: #fff;
     overflow: hidden;
     color: #303133;
     transition: .3s;
-    padding: 15px;
-    margin-bottom: 4px;
+    padding: 10px 15px;
+    margin-bottom: -1px;
     line-height: 36px;
 }
 </style>
